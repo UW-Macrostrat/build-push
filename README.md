@@ -19,11 +19,10 @@ on:
 
 jobs:
   call-build-image:
-    uses: ./.github/workflows/build-image-reusable.yaml
+    uses: UW-Macrostrat/build-push/.github/workflows/build-push.yaml@main
+    secrets: inherit
     with:
-      image: 'hub.opensciencegrid.org/macrostrat/<x>'
-      path: <optional>
-      context: <optional
-      username: ${{ vars.HARBOR_CLI_NAME }}
-      password: ${{ secrets.HARBOR_CLI_SECRET }}
+      image: 'hub.opensciencegrid.org/macrostrat/traefik-log-exporter'
+      context: <optional - remove this line if the context is root>
+      path: <optional - remove this line if the dockerfile is at the root of the context>
 ```
