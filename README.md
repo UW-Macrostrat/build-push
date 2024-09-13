@@ -4,7 +4,11 @@ Macrostrat drop in image build and pusher with built-in tagging scheme designed 
 
 ## Usage
 
-Copy the following into `.github/workflows/build-push.yml`:
+Copy the following into `.github/workflows/images.yml`.
+
+Replace all content comments denoted as `<...>`. 
+
+For instance `test <replace me> test` should be `test replaced test`.
 
 ```yaml
 name: Build image
@@ -22,7 +26,7 @@ jobs:
     uses: UW-Macrostrat/build-push/.github/workflows/build-push.yaml@main
     secrets: inherit
     with:
-      image: 'hub.opensciencegrid.org/macrostrat/traefik-log-exporter'
+      image: 'hub.opensciencegrid.org/macrostrat/<replace this with the image name>'
       context: <optional - remove this line if the context is root>
       path: <optional - remove this line if the dockerfile is at the root of the context>
 ```
