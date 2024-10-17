@@ -9,7 +9,7 @@ on:
       context:
         required: false
         type: string
-      path:
+      file:
         required: false
         type: string
 
@@ -57,7 +57,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ${{ inputs.context }}
-          path: ${{ inputs.path }}
+          file: ${{ inputs.path }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
