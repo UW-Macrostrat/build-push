@@ -73,7 +73,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ${{ inputs.context }}
+          context: ${{ inputs.context || '.' }}
           file: ${{ inputs.path }}
           push: ${{ env.push == 'true' }}
           tags: ${{ steps.meta.outputs.tags }}
