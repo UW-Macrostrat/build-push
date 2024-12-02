@@ -74,7 +74,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ${{ inputs.context || '.' }}
-          file: ${{ inputs.path }}
+          file: ${{ inputs.file || 'Dockerfile' }}
           push: ${{ env.push == 'true' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
