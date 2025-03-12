@@ -32,6 +32,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.artifact }}
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
 
       - name: Checkout Github
         if: ${{ inputs.artifact }}
