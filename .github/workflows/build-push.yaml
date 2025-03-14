@@ -68,7 +68,7 @@ jobs:
       - name: Check HARBOR values
         id: check-harbor
         run: |
-          if [ -z "${{ secrets.username || secrets.OSG_HARBOR_ROBOT_USER }}" ] || [ -z "${{ secrets.password || secrets.OSG_HARBOR_ROBOT_PASSWORD }}" ]; then
+          if [ -z "${{ secrets.username || vars.HARBOR_CLI_NAME }}" ] || [ -z "${{ secrets.password || secrets.HARBOR_CLI_SECRET }}" ]; then
             echo "push=false" >> $GITHUB_ENV
           else
             echo "push=true" >> $GITHUB_ENV
@@ -79,8 +79,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: hub.opensciencegrid.org
-          username: ${{ secrets.username || secrets.OSG_HARBOR_ROBOT_USER }}
-          password: ${{ secrets.password || secrets.OSG_HARBOR_ROBOT_PASSWORD }}
+          username: ${{ secrets.username || secrets.HARBOR_CLI_NAME }}
+          password: ${{ secrets.password || secrets.HARBOR_CLI_SECRET }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
