@@ -50,6 +50,8 @@ jobs:
           tags: |
             type=raw,value=sha-{{github.sha}}
             type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, '-')}}
+            type=raw,value=latest-{{date 'YYYYMMDDHHmmss'}},enable=${{ startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, '-')}}
+            type=raw,value=latest-itb,enable=${{ startsWith(github.ref, 'refs/tags/v') && contains(github.ref, '-')}}
             type=raw,value=latest-itb-{{date 'YYYYMMDDHHmmss'}},enable=${{ startsWith(github.ref, 'refs/tags/v') && contains(github.ref, '-')}}
             type=ref,event=pr,suffix=-{{date 'YYYYMMDDHHmmss'}}
             type=ref,event=pr
